@@ -79,3 +79,113 @@ console.log(username)
 }
 
 
+//9/24
+{
+  //mapについて
+const array = [1,2,3,4];
+const changedArray = array.map( x => x*10);
+console.log(changedArray)
+//[10, 20, 30, 40]
+
+// 連想配列について
+// 連想配列とは、自動的に割り当てられる数字をキーとして持つかわりに、自由に任意の文字列を割り振ることができる配列
+// キーを任意に指定できることによって、そこに格納されている値が何のことであるかということがより簡単に連想できるようになっている
+// また、配列の要素からある値を探し出して使いたいという場合でも、キーを指定しやすいという特徴がある
+// JavaScriptでも配列を使うことができ、連想配列のオブジェクトもある。変数のリストをキーと値の配列よりも便利に使えるようになっている’
+
+// Object.keys() メソッドは、指定されたオブジェクトが持つプロパティの 名前の配列を、通常のループで取得するのと同じ順序で返します。
+// const object1 = {
+  a: 'somestring',
+  b: 42,
+  c: false
+};
+
+console.log(Object.keys(object1));
+expected output: Array ["a", "b", "c"]
+
+const object = {
+  'hoge': {text: 'hello'},
+  'hoge1': {text: 'hi'},
+  'hoge2': {text: 'good'}
+};
+
+const ObjectArray = Object.keys(object).map(key => {
+  const value = object[key];
+  value['idNumber'] = key;
+  return value
+});
+
+console.log(ObjectArray)
+}
+
+// //Filterについて
+// //条件に合う要素だけを抽出する　filter()
+
+// //Filterについて
+// //条件に合う要素だけを抽出する　filter()
+
+const ObjectArray = [
+  {id: 'hoge', text: "fuga"},
+  {id: 'hoge1', text: "fuga1"},
+  {id: 'hoge2', text: "fuga2"},
+];
+
+const result = ObjectArray.filter(object => {
+  return object.id === 'hoge'
+});
+
+console.log(result)  
+//0: Object
+// id: "hoge"
+// text: "fuga"
+console.log(result[0].text) //fuga
+
+
+//findindexの使い方　要素の何番目なのかを知ることができるメソッド　
+//配列をイテレートする　条件がtureの要素が何番目なのかを返す
+//使い所としては配列の中でどこかの要素に変更があった時に　その変更があったｉｎｄｅｘを持ってきて何らかの処理をする時に使う
+const ObjectArray = [
+  {id: 'hoge', text: "fuga"},
+  {id: 'hoge1', text: "fuga1"},
+  {id: 'hoge2', text: "fuga2"},
+];
+
+const index = ObjectArray.findIndex(object => {
+  return object.id === 'hoge2';
+});
+
+console.log(index, ObjectArray[index]) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
