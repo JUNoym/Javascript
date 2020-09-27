@@ -157,6 +157,132 @@ const index = ObjectArray.findIndex(object => {
 console.log(index, ObjectArray[index]) 
 
 
+// 同期処理の書き方
+
+const synchronousFunc = () => {
+  console.log('同期処理関数ないのログです')
+  return '完了'
+}
+
+const message = '同期処理'
+
+const result = synchronousFunc()
+console.log(message + result)
+
+// 非同期処理の書き方　new promise
+
+const getGitUsername = () => {
+  return new Promise((resolve, reject) => {
+    const url = "https://api.github.com/users/JUNoym";
+    //GITHUB　APIをFetchメソッドで実行
+    fetch(url)
+      .then((res) => res.json())
+      .then((json) => {
+        console.log("これ非同期処理のメッセージです");
+        return resolve(json.login);
+      })
+      .catch((error) => {
+        console.error("これは非同期処理のメッセージです", error);
+        return reject(null);
+      });
+  });
+};
+
+const message = "gitのユーザーIDは";
+getGitUsername().then(username => {
+  console.log(message + username)
+})
+
+
+//非同期処理　async/awaitの場合
+const getGitUsername2 = async () => {
+  const message2 = 'gitのuseridは';
+  const url = "https://api.github.com/users/JUNoym"
+
+  const json = await fetch(url)
+      .then(res => {
+        console.log('これは非同期処理が成功したときのメッセージです')
+        return res.json()
+      }).catch(error => {
+        console.log('これは非同期処理が失敗したときメッセージです')
+        return null
+
+      });
+  const username = json.login;
+  console.log(message2 + username)
+}
+
+getGitUsername2();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
